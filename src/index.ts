@@ -1,11 +1,5 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
-export async function fetchData() {
-  try {
-    const response = await axios.get('https://example.com');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
-  }
-}
+export { NpcApi } from "./NPCApi";
