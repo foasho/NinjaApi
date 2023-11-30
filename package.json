@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/foasho/NinjaApi.git"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "jest",
