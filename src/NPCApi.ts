@@ -22,7 +22,7 @@ export const NpcApi = async (
   maxTokens = 150,
 ): Promise<IConversationResponse> => {
   const key = OPENAI_API_KEY || process.env.OPENAI_API_KEY || process.env.REACT_APP_OPENAI_API_KEY;
-  if (!key) {
+ if (!key) {
     return {
       data: {
         role: "system",

@@ -6,12 +6,9 @@ interface SkywayTokenApiResponseProps {
   message: string;
 }
 
-type SkywayTokenApiProps = {
-  appIdToken?: string;
-  appSecretKey?: string;
-};
 export const SkywayTokenApi = async (
-  { appIdToken, appSecretKey }: SkywayTokenApiProps
+  appIdToken: string|undefined = undefined, 
+  appSecretKey: string|undefined = undefined
 ): Promise<SkywayTokenApiResponseProps> => {
   const _id = appIdToken || process.env.SKYWAY_APP_ID || process.env.REACT_APP_SKYWAY_APP_ID;
   const _key = appSecretKey || process.env.SKYWAY_APP_SECRET_KEY || process.env.REACT_APP_SKYWAY_APP_SECRET_KEY; 

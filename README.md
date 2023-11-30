@@ -39,3 +39,8 @@ OPENAI_API_KEY="sk-1..."
 SKYWAY_APP_ID="2772279d-2e55-109e-189d-9db64dc4d427"
 SKYWAY_APP_SECRET_KEY="mrkf5..."
 ```
+
+## ライブラリメンテナ
+```
+pnpm test
+```

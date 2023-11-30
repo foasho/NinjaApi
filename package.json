@@ -1,14 +1,22 @@
 {
   "name": "@ninjagl/api",
   "version": "1.0.0",
-  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "author": "ShoOsaka",
+  "description": "R3F-WEBGL FastGameApi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foasho/NinjaApi.git"
+  },
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",

@@ -1,5 +1,6 @@
 import { ChatCompletionRequestMessage } from "openai";
 import { NpcApi } from "./NPCApi";
+import { SkywayTokenApi } from "./SkywayTokenApi";
 
 jest.mock('axios');
 import axios from 'axios';
@@ -20,6 +21,15 @@ describe('NpcApi', () => {
       ];
 
     const response = await NpcApi(conversations);
+
+    // response.statusが200であることを確認
+    expect(response.status).toEqual(200);
+  });
+
+  it("SkywayTokenApi", async () => {
+    (axios.post as jest.Mock).mockResolvedValue({});
+
+    const response = await SkywayTokenApi();
 
     // response.statusが200であることを確認
     expect(response.status).toEqual(200);
