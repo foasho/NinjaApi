@@ -11,18 +11,13 @@ interface IConversationResponse {
   message: string;
 }
 
-type NpcApiProps = {
-  conversations: ChatCompletionRequestMessage[];
-  OPENAI_API_KEY?: string;
-  maxTokens?: number;
-};
 export const NpcApi = async (
   conversations: ChatCompletionRequestMessage[],
   OPENAI_API_KEY = undefined,
   maxTokens = 150,
 ): Promise<IConversationResponse> => {
-  const key = OPENAI_API_KEY || process.env.OPENAI_API_KEY || process.env.REACT_APP_OPENAI_API_KEY;
- if (!key) {
+  const key = OPENAI_API_KEY || process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY || process.env.REACT_APP_OPENAI_API_KEY;
+  if (!key) {
     return {
       data: {
         role: "system",
@@ -57,13 +52,14 @@ export const NpcApi = async (
     }
   }
   catch (error) {
+    console.error(error);
     return {
       data: {
         role: "system",
         content: "",
       },
       status: 500,
-      message: "Error fetching data",
+      message: "Internal Error. Please check your API key.",
     };
   }
   return {

@@ -45,21 +45,19 @@ SKYWAY_APP_SECRET_KEY="mrkf5..."
 ```ts
 // app/api/skyway/token/route.ts
 import { SkywayTokenApi } from "@ninjagl/api";
-import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-  return await SkywayTokenApi();
+  return Response(await SkywayTokenApi());
 }
 ```
 
 ```ts
 // app/api/npc/conversations/route.ts
 import { NpcApi } from "@ninjagl/api";
-import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   const { conversations } = await req.json();
-  return await NpcApi();
+  return Response(await NpcApi());
 }
 ```
 

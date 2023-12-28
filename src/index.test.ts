@@ -22,8 +22,8 @@ describe('NpcApi', () => {
 
     const response = await NpcApi(conversations);
 
-    // response.statusが200であることを確認
-    expect(response.status).toEqual(200);
+    // responseのroleがassistantであることを確認
+    expect(response.data.role).toEqual("assistant");
   });
 
   it("SkywayTokenApi", async () => {
