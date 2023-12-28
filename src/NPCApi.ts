@@ -33,10 +33,13 @@ export const NpcApi = async (
   const openai = new OpenAIApi(configuration);
   let completion = "";
   try {
-    const messages = conversations.map((prevMessage) => ({
-      role: prevMessage.role,
-      content: prevMessage.content,
-    }));
+    const messages: ChatCompletionRequestMessage[] = [];
+    conversations.forEach((prevMessage) => {
+      messages.push({
+        role: prevMessage.role,
+        content: prevMessage.content,
+      })
+    });
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: messages,
