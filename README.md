@@ -1,9 +1,16 @@
 # NinjaApi
 
+DEMO: https://ninja-core.vercel.app
+
+NinjaGL のコアライブラリ
+- Editor: https://github.com/foasho/NinjaGL
+- Core: https://github.com/foasho/NinjaCore
+- API: HERE
+
 NinjaGLで作成したコンテンツのデータ連携
 ※エンドポイントはデフォルト
-- NPC会話API```/api/npc/conversations```
 - マルチプレイヤー用API```/api/skyway/token```
+- NPC会話API```/api/npc/conversations```
 
 # インストール
 
@@ -37,7 +44,7 @@ REACT_APP_SKYWAY_APP_SECRET_KEY=
 サンプル
 ```conf
 OPENAI_API_KEY="sk-1..."
-SKYWAY_APP_ID="2772279d-2e55-109e-189d-9db64dc4d427"
+SKYWAY_APP_ID="<UUID>"
 SKYWAY_APP_SECRET_KEY="mrkf5..."
 ```
 
@@ -63,24 +70,27 @@ export async function POST(req: Request) {
 
 ## Express Usage
 ```js
-import dotenv from 'dotenv';
-import express from 'express';
+import dotenv from "dotenv";
+import express from "express";
 import { SkywayTokenApi, NpcApi } from "@ninjagl/api";
 
 dotenv.config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const port = 5174;
 
-app.get('/api/skyway/token', async (req, res) => {
+app.get("/api/skyway/token", async (req, res) => {
   const response = await SkywayTokenApi();
-  res.send(response.data);
+  res.send(response);
 });
 
-app.post('/api/npc', async (req, res) => {
+app.post("/api/npc/conversations", async (req, res) => {
   const { conversations } = req.body;
   const response = await NpcApi(conversations);
-  res.send(response.data);
+  res.send(response);
 });
 
 app.listen(port, () => {
@@ -90,8 +100,9 @@ app.listen(port, () => {
 
 ## ライブラリメンテナ
 ```bash
-// testcase
+// Testing
 pnpm test
-// publish
+
+// NPM公開
 pnpm publish
 ```
